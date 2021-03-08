@@ -1,0 +1,17 @@
+<table class="table"> <!--Css te table formatıdır-->
+    <tr>
+        <th style="text-align:center">ProductId</th> <!--<th></th> -> Tabloya başlık ekler. style="text-align:center" -> Metni sütuna ortalar-->
+        <th style="text-align:center">ProductName</th>
+        <th style="text-align:center">CategoryId</th>
+        <th style="text-align:center">UnitPrice</th>
+        <th style="text-align:center">UnitsInStock</th>
+
+    </tr>
+    <tr *ngFor="let product of products">
+        <td style="text-align:center">{{product.productId}}</td>
+        <td style="text-align:center">{{product.productName}}</td>
+        <td style="text-align:center">{{product.categoryId}}</td>   
+        <td style="text-align:center">{{product.unitPrice}}</td>     
+        <td style="text-align:center">{{product.unitsInStock}}</td>
+    </tr>
+</table>
