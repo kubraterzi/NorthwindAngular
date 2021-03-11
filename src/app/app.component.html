@@ -1,13 +1,13 @@
-<!-- {{product1.productName}}
+<div class="container">
+  <app-navi></app-navi>
+  <div class="row">
+    <div class="col-md-3">
+      <app-category></app-category>
+    </div>
+    <div class="col-md-9">
+      <app-product></app-product>
+    </div>
+  </div>
 
-<ul>
-  <li *ngFor= "let product of products">{{product.productName}}</li> <!--*ngFor built-in bir direktiftir.Burada foreach görevi görür. Foreach teki süslü parantezler burada <li></li> html kodudur. 
-</ul> -->
-
-
-<app-navi></app-navi>
-<app-category></app-category>
-<app-product></app-product>
-
-
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+</div>

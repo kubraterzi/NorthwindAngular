@@ -1,17 +1,45 @@
-<table class="table"> <!--Css te table formatıdır-->
+<!-- <table class="table">
+  Css te table formatıdır
+  <thead>
     <tr>
-        <th style="text-align:center">ProductId</th> <!--<th></th> -> Tabloya başlık ekler. style="text-align:center" -> Metni sütuna ortalar-->
-        <th style="text-align:center">ProductName</th>
-        <th style="text-align:center">CategoryId</th>
-        <th style="text-align:center">UnitPrice</th>
-        <th style="text-align:center">UnitsInStock</th>
+      <th style="text-align:center">ProductID</th>
+      <th style="text-align:center">Product Name</th>
+      <th style="text-align:center">CategoryID</th>
+      <th style="text-align:center">Unit Price</th>
+      <th style="text-align:center">Units In Stock</th>
+    </tr>
+  </thead>
 
+  <tr *ngFor="let product of products">
+    <td style="text-align:center">{{ product.productID }}</td>
+    <td style="text-align:center">{{ product.productName }}</td>
+    <td style="text-align:center">{{ product.categoryID }}</td>
+    <td style="text-align:center">{{ product.unitPrice }}</td>
+    <td style="text-align:center">{{ product.unitsInStock }}</td>
+  </tr>
+</table> -->
+
+<div *ngIf="dataLoaded==false" class="spinner-border text-success" role="status"> <!-- Veri gelene kadar spinner ı döndürür. -->
+  <span class="visually-hidden">Loading...</span>
+</div>
+<table *ngIf="dataLoaded==true" class="table"> <!-- Css te table formatıdır. Veri gelene kadar başlıkları göstermesini istemediğimiz için, veri geldiği zaman başlık getirmesini söyledik -->
+  <thead>
+    <tr>
+      <th scope="col">ProductID</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">CategoryID</th>
+      <th scope="col">Unit Price</th>
+      <th scope="col">Units In Stock</th>
     </tr>
+  </thead>
+  <tbody>
     <tr *ngFor="let product of products">
-        <td style="text-align:center">{{product.productId}}</td>
-        <td style="text-align:center">{{product.productName}}</td>
-        <td style="text-align:center">{{product.categoryId}}</td>   
-        <td style="text-align:center">{{product.unitPrice}}</td>     
-        <td style="text-align:center">{{product.unitsInStock}}</td>
+      <th scope="row"></th>
+      <td>{{ product.productID }}</td>
+      <td>{{ product.productName }}</td>
+      <td>{{ product.categoryID }}</td>
+      <td>{{ product.unitPrice }}</td>
+      <td>{{ product.unitsInStock }}</td>
     </tr>
+  </tbody>
 </table>
