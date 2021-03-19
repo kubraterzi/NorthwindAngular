@@ -19,27 +19,54 @@
   </tr>
 </table> -->
 
-<div *ngIf="dataLoaded==false" class="spinner-border text-success" role="status"> <!-- Veri gelene kadar spinner ı döndürür. -->
+<div
+  *ngIf="dataLoaded == false"
+  class="spinner-border text-success"
+  role="status"
+>
+  <!-- Veri gelene kadar spinner ı döndürür. -->
   <span class="visually-hidden">Loading...</span>
 </div>
-<table *ngIf="dataLoaded==true" class="table"> <!-- Css te table formatıdır. Veri gelene kadar başlıkları göstermesini istemediğimiz için, veri geldiği zaman başlık getirmesini söyledik -->
+
+<div class="mb-3" *ngIf="products">
+  <label for="exampleFormControlInput1" class="form-label"
+    ><b>Search to Product :</b></label>
+
+  <!--[(ngModel)] -> Çift yönlü binding, hem input tarafında hem component tarafında değişir.input->component, component-> input--> 
+  <input
+    type="text"
+    class="form-control"
+    id="filterText"
+    [(ngModel)] = "filterText"     
+    placeholder="please enter the product you want to search..."
+  />
+</div>
+<div>
+  {{filterText}}  <!-- Tek yönlü binding, yani yalnızca component.ts tarafında değiştirilebilir. -->
+</div>
+
+<table *ngIf="dataLoaded == true" class="table">
+  <!-- Css te table formatıdır. Veri gelene kadar başlıkları göstermesini istemediğimiz için, veri geldiği zaman başlık getirmesini söyledik -->
   <thead>
     <tr>
       <th scope="col">ProductID</th>
       <th scope="col">Product Name</th>
       <th scope="col">CategoryID</th>
       <th scope="col">Unit Price</th>
+      <th scope="col">Unit Price(VAT)</th>
       <th scope="col">Units In Stock</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let product of products">
-      <th scope="row"></th>
+    <tr *ngFor="let product of products | productFilter:filterText">
       <td>{{ product.productID }}</td>
-      <td>{{ product.productName }}</td>
+      <td>{{ product.productName | uppercase }}</td>
       <td>{{ product.categoryID }}</td>
-      <td>{{ product.unitPrice }}</td>
+      <td>{{ product.unitPrice | currency: "USD":true:"1.2-2" }}</td>
+      <!-- 1.2-2 virgülden sonra iki basamak gösterecek -->
+      <td>{{ product.unitPrice | vatAdded: 10 | currency: "USD":true:"1.2-2" }} </td>      
       <td>{{ product.unitsInStock }}</td>
+      <td><button (click)="addToCart(product)" type="button" class="btn btn-success">Add To Cart</button></td>
     </tr>
   </tbody>
 </table>

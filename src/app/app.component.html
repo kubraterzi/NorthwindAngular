@@ -5,9 +5,12 @@
       <app-category></app-category>
     </div>
     <div class="col-md-9">
-      <app-product></app-product>
+      <!-- <app-product></app-product> -->
+      <router-outlet></router-outlet>
+      <!-- Angular, Single Page Application(Tek Sayfa Uygulaması) dır. Bir sayfada menü gibi static olacak alanlar kendi divleri ile konumlandırılır.
+      Dinamik olarak değişecek componentlerin(div lerin) tamamını karşılayan yapı, router yapısıdır. -->
     </div>
   </div>
 
-  <router-outlet></router-outlet>
+  
 </div>

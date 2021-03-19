@@ -1,7 +1,11 @@
 <ul class="list-group">
-  <li class="list-group-item">An item</li>
-  <li class="list-group-item">A second item</li>
-  <li class="list-group-item">A third item</li>
-  <li class="list-group-item">A fourth item</li>
-  <li class="list-group-item">And a fifth one</li>
+  <li [class] = getAllInMenuClass() routerLink="/products" > All Products </li>
+  <li (click)= "setCurrentCategory(category)" 
+  routerLink="products/category/{{category.categoryID}}"  
+  *ngFor="let category of categories" 
+  class="list-group-item" >{{category.categoryName}}</li>
 </ul>
+
+<h5 *ngIf="currentCategory">{{currentCategory.categoryName}}</h5> <!-- anasayfa başlatıldığında currentCategory içeriği boş olduğu için, html
+  menü kısmını topluyor ve verileri göstermiyordu. Biz de eğer currentCategory içeriği doluysa(anasayfada bir category ye tıklandıysa)
+  ekrana yazdırma işlemini gerçekleştirdik komutu verdik. -->
