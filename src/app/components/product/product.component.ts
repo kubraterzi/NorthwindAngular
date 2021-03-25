@@ -51,6 +51,6 @@ export class ProductComponent implements OnInit {
   }
 }
 
-// metodun başına, ortasına ve sonuna birer durum mesajı koyduğumuzu varsayarsak, iş yüküne göre en hafif olan durum mesajı önce gelir.Bu da 
+// metodun başına, ortasına ve sonuna birer durum mesajı koyduğumuzu varsayarsak, iş yüküne göre en hafif olan durum mesajı önce gelir.Bu da
 // metodun düzenli ve senkronize çalışmadığını gösterir. Bu senkronizasyonu sağlamak adına veriyi yönetebileceğimiz bir düzenleme yapmalıyız.
 // dataLoaded değişkeni, bu senkronizasyonu sağlamak adına tasarlanmıştır.
