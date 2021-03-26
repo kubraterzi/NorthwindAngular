@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'; // farklı projelerden ekleyebileceğimiz modülleri burada import etmeliyiz.
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http'; // farklı projelerden ekleyebileceğimiz modülleri burada import etmeliyiz.
 import{FormsModule, ReactiveFormsModule} from '@angular/forms'
 import{BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
@@ -15,10 +15,12 @@ import { ProductFilterPipe } from './pipes/product-filter.pipe';
 import{ToastrModule} from 'ngx-toastr';
 import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
+import { LoginComponent } from './components/login/login.component';
+import {AuthInterceptor} from './interceptors/auth.interceptor';
 
 
 @NgModule({
-  declarations: [ // Kendik yazdıklarımız - Bir component i kullanacaksak, buraya eklememiz gerekiyor. Ancak @angular/cli bizim yerimize otomatik ekliyor.
+  declarations: [ // Kendi yazdıklarımız - Bir component i kullanacaksak, buraya eklememiz gerekiyor. Ancak @angular/cli bizim yerimize otomatik ekliyor.
     AppComponent,
     ProductComponent,
     CategoryComponent,
@@ -26,7 +28,8 @@ import { ProductAddComponent } from './components/product-add/product-add.compon
     VatAddedPipe,
     ProductFilterPipe,
     CartSummaryComponent,
-    ProductAddComponent
+    ProductAddComponent,
+    LoginComponent
   ],
 
   imports: [ // Dışarıdan aldıklarımız - Backend tarafındaki Autofac injection ları gibi, burada da enjekte etmemiz gerekiyor.
@@ -40,7 +43,11 @@ import { ProductAddComponent } from './components/product-add/product-add.compon
       positionClass:"toast-bottom-right"
     })
   ],
-  providers: [],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

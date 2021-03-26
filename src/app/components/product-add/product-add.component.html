@@ -1,0 +1,43 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="title">Add a Product</h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="productAddForm">
+                    <div class="form-group">
+                        <div class="mb-2">
+                            <label for="productName">Product Name</label>
+                            <input type="text" id="productName" formControlName="productName" class="form-control"
+                                placeholder="Product Name" />
+                        </div>
+                        <div class="mb-2">
+                            <label for="categoryId">Category ID</label>
+
+                            <input type="number" id="categoryId" formControlName="categoryId" class="form-control"
+                                placeholder="Category Id" />
+                        </div>
+                        <div class="mb-2">
+                            <label for="unitPrice">Unit Price</label>
+
+                            <input type="number" id="unitPrice" formControlName="unitPrice" class="form-control"
+                                placeholder="Unit Price" />
+                        </div>
+                        <div class="mb-2">
+
+                            <label for="productName">Units In Stock</label>
+
+                            <input type="number" id="unistInStock" formControlName="unitsInStock" class="form-control"
+                                placeholder="Units In Stock" />
+                        </div>
+                    </div>
+                    <!-- burada oluşturulan form formGroup ile map edilmiş oluyor. -->
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-primary float-end" (click)="addProduct()" > Add This Product</button>
+            </div>
+        </div>
+    </div>
+</div>
